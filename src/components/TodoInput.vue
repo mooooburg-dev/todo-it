@@ -14,8 +14,14 @@ export default {
   },
   methods: {
     addTodo: function(){
-      // console.log(this.newTodoItem);
-      localStorage.setItem(this.newTodoItem, this.newTodoItem); // setItem()는 로컬 스토리지에 데이터를 추가하는 API
+      if(this.newTodoItem != ""){
+        var value = this.newTodoItem && this.newTodoItem.trim();
+        localStorage.setItem(value, value);
+        this.clearInput();
+      }
+    },
+    clearInput(){
+      this.newTodoItem = '';
     }
   }
 }
